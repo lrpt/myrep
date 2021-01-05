@@ -1,0 +1,52 @@
+<%- include('partials/header'); %>
+  <style>
+    .center {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 280px;
+      width: 20%;
+      padding: 25px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.747);
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    .createaccount {
+      margin: 15px 0 0;
+      color: rgba(19, 14, 14, 0.39);
+      font-size: 12px;
+    }
+
+    body {
+      background-color: gray;
+    }
+  </style>
+  </head>
+  <body>
+    <% if (errors.length) { %>
+      <div class="alert alert-danger">
+        <ul>
+          <% for (var e of errors) { %>
+            <li>
+              <%= e.msg %>
+            </li>
+            <% }%>
+        </ul>
+      </div>
+      <% } %>
+        <div class="center">
+          <h6>Please Log In </h6>
+          <br>
+          <form method="post" action="/login">
+            <div class="form-group">
+              <input name="username" type="username" class="form-control" id="username" placeholder="Username" required>
+              <input name="passw" type="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-dark btn-block">Login</button>
+          </form>
+          <p class="createaccount">Not registered? <a href="#">Create an ac-count</a></p>
+        </div>
+  </body>
+  </html>

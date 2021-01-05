@@ -1,0 +1,58 @@
+<%- include('partials/header'); %>
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-md-4 col-sm-4">
+                <form>
+                    <h2>Profile</h2>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"
+                            </div>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter username"
+                                name="username" value="<%= user.username%>" disabled>
+                        </div>
+                </form>
+                <br>
+            </div>
+            <% if (type=='ADMIN' ) { %>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (var u of data) { %>
+                                <tr>
+                                    <td>
+                                        <%= u.id%>
+                                    </td>
+                                    <td>
+                                        <%= u.username %>
+                                    </td>
+                                    <td>
+                                        <%= u.email %>
+
+                                    </td>
+                                    <td>
+                                        <%= u.role %>
+                                    </td>
+                                </tr>
+                                <%} %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+                    <form method="post" action="/login/logout">
+                        <button type="submit" class="btn btn-secondary">Logout</button>
+                    </form>
+        </div>
+    </body>
+    </html>
