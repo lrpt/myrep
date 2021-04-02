@@ -1,0 +1,41 @@
+{
+   "vhosts": {
+     "server1": {
+       "connection": {
+         "url": "amqp://guest:guest@127.0.0.1:5672"
+         },
+          "exchanges": [
+             "services",
+             "dead_letters"
+             ]
+         ,
+          "queues": {
+           "email_queue":{
+              "options": {
+                 "arguments": {
+                    "x-dead-letter-exchange": "dead_letters",
+                    "x-dead-letter-routing-key": "DeadLetter.email"
+                 }
+               }
+           },
+           "log_queue":{},
+           "dlemail_queue":{}
+         },
+             "bindings": [
+              "services[Service.order.email] -> email_queue",
+               "services[Service.#] -> log_queue",
+               "dead_letters[DeadLetter.email] -> dlemail_queue"
+            ]
+          ,
+          "publications": {
+             "email_publication": {
+                "vhost": "server1",
+                "exchange": "services",
+                "routingKey": "Service.order.email"
+             }
+          }
+       }
+    }
+   }
+
+ 

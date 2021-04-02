@@ -1,0 +1,27 @@
+{
+   "vhosts": {
+     "server1": {
+       "connection": {
+         "url": "amqp://guest:guest@127.0.0.1:5672"
+         },
+         "queues": {
+            "email_queue":{
+               "options": {
+                  "arguments": {
+                     "x-dead-letter-exchange": "dead_letters",
+                     "x-dead-letter-routing-key": "DeadLetter.email"
+                  }
+                }
+            }
+          },
+          "subscriptions": {
+             "email_subscription": {
+                "queue": "email_queue",
+                "prefetch": 5
+             }
+          }
+       }
+    }
+   }
+
+ 

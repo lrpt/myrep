@@ -1,0 +1,12 @@
+{
+    "orderId": "2222",
+    "product": {
+        "productId":"4141414212",
+        "productDescription": "Nike Air Jordan shoes",
+        "size":"10"
+    },
+    "customer":{
+        "customerId":"9741947129",
+        "customerEmail":"lrpt@lrpt.com"
+    }
+}
